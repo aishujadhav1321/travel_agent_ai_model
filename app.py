@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from agent import agent
 
 app = FastAPI()
 
@@ -13,15 +12,6 @@ class TravelRequest(BaseModel):
 
 @app.post("/travel-assistant")
 async def travel_assistant(request: TravelRequest):
-
-    try:
-        response = agent.invoke(request.query)
-
-        return {
-            "response": response.content
-        }
-
-    except Exception as e:
-        return {
-            "error": str(e)
-        }
+    return {
+        "response": "test working"
+    }
